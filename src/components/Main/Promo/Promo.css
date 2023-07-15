@@ -1,0 +1,124 @@
+.promo {
+  display: flex;
+  justify-content: space-between;
+  background: #073042;
+  color: #fff;
+  box-sizing: border-box;
+  line-height: 0;
+  padding: 75px 70px 50px;
+}
+
+.promo__description {
+  padding: 0;
+}
+
+.promo__title {
+  max-width: 640px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  padding-bottom: 36px;
+  margin: 0;
+}
+
+.promo__subtitle {
+  max-width: 310px;
+  font-size: 13px;
+  line-height: 1.23;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  padding-bottom: 146px;
+  margin: 0;
+}
+
+.promo__button {
+  width: 129px;
+  height: 36px;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background: #0b3b4f;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.promo__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.promo__illustration {
+  max-width: 310px;
+  max-height: 304px;
+}
+
+@media screen and (max-width: 984px) {
+  .promo {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 140px 0 66px;
+    margin: 0 auto;
+  }
+
+  .promo__illustration {
+    padding: 0 0 48px;
+  }
+
+  .promo__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .promo__title {
+    max-width: 730px;
+    font-size: 40px;
+    line-height: 1.25;
+    padding-bottom: 22px;
+    text-align: center;
+  }
+
+  .promo__subtitle {
+    max-width: 260px;
+    text-align: center;
+    padding-bottom: 92px;
+  }
+
+  .promo__button {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .promo {
+    padding: 70px 0 30px;
+  }
+
+  .promo__illustration {
+    max-width: 210px;
+    max-height: 206px;
+    padding-bottom: 44px;
+  }
+
+  .promo__title {
+    max-width: 300px;
+    font-size: 29.3px;
+    line-height: 1.27;
+    padding-bottom: 26px;
+  }
+
+  .promo__subtitle {
+    padding-bottom: 80px;
+  }
+
+  .promo__button {
+    margin-bottom: 0px;
+  }
+}

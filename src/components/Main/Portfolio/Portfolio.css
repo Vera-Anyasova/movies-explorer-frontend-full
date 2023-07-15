@@ -1,0 +1,124 @@
+.portfolio {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 0 70px 125px;
+  background: #fff;
+}
+
+.portfolio__title {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.11;
+  color: #a0a0a0;
+  mix-blend-mode: normal;
+  padding-bottom: 50px;
+  margin: 0;
+}
+
+.portfolio__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio__element {
+  list-style-type: none;
+  padding: 0px;
+  position: relative;
+  margin: 0 0 20px;
+}
+
+.portfolio__element:last-of-type {
+  margin: 0;
+}
+
+.portfolio__link {
+  text-decoration: none;
+  color: #000;
+}
+
+.portfolio__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.portfolio__text {
+  max-width: 1140px;
+  font-size: 30px;
+  line-height: 1.67;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
+  padding: 0 0 19px;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0;
+  color: #000;
+}
+
+.portfolio__text_last {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio__button {
+  background: url(../../../images/portfolio_btn.svg) no-repeat center/cover;
+  background-size: 18px 17px;
+  height: 60px;
+  max-width: 29px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio__button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 984px) {
+  .portfolio {
+    padding: 0px 50px 90px;
+  }
+
+  .portfolio__text {
+    width: 100%;
+    font-size: 28px;
+    line-height: 1.79;
+  }
+
+  .portfolio__button {
+    max-width: 27px;
+    background-size: 16px 16px;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .portfolio {
+    padding: 0px 14px 70px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 1.43;
+    padding-bottom: 40px;
+  }
+
+  .portfolio__text {
+    font-size: 18px;
+    line-height: 1.56;
+  }
+
+  .portfolio__button {
+    max-width: 18px;
+    height: 28px;
+    background-size: 11px 11px;
+  }
+}

@@ -1,0 +1,33 @@
+.authorization__button_register {
+  margin-top: 69px;
+}
+
+.authorization__input_register-name {
+  font-weight: 400;
+}
+
+.authorization__link_register-edit {
+  display: none;
+}
+
+.authorization__error_register-name {
+  top: 73px;
+}
+
+.authorization__error_register-email {
+  top: 161px;
+}
+
+.authorization__error_register-password {
+  top: 249px;
+}
+
+@media screen and (max-width: 715px) {
+  .authorization__input_register-password {
+    margin-bottom: 0;
+  }
+
+  .authorization__button_register {
+    margin: 179px 0 14px;
+  }
+}
