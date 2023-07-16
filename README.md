@@ -4,6 +4,6 @@
 
 ## Ссылка на проект
 
-IP 158.160.109.19
+IP 158.160.32.106
 
 Frontend https://movies-vera.nomoredomains.xyz
