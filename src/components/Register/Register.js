@@ -56,6 +56,7 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
         id="email-input"
         name="email"
         type="email"
+        pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
         value={values.email || ""}
         onChange={handleChange}
         placeholder="E-mail"

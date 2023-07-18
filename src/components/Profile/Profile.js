@@ -80,6 +80,7 @@ function Profile({ onUpdateUser, errorAuth, handleSignout }) {
             id="email-input"
             name="email"
             type="email"
+            pattern="^([^ ]+@[^ ]+\.[a-z]{2,6}|)$"
             value={values.email || ""}
             onChange={handleChange}
             disabled={!isDisabled}
