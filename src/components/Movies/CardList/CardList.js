@@ -22,7 +22,7 @@ function CardList({
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
-  search,
+  firstSearch,
   cardProps,
 }) {
   const width = useWindowSize();
@@ -74,7 +74,7 @@ function CardList({
           );
         })}
       </ul>
-      {!moviesToShow && search && (
+      {!moviesToShow && firstSearch && (
         <PopupWithMessage
           isOpen={!isInfoPopupOpen}
           message="Ничего не найдено."

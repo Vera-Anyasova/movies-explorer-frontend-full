@@ -19,6 +19,7 @@ function Movies({
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
+  firstSearch,
 }) {
   const moviesList = !isChecked ? foundMovies : shortMovies;
   return (
@@ -40,7 +41,7 @@ function Movies({
         onSavedMovie={onSavedMovie}
         onDeleteMovie={onDeleteMovie}
         savedMovies={savedMovies}
-        search={search}
+        firstSearch={firstSearch}
       />
     </main>
   );
