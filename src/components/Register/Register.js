@@ -4,7 +4,7 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Register/Register.css";
 
-function Register({ onRegister, isSubmitError, errorAuth }) {
+function Register({ onRegister, errorAuth }) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -23,7 +23,6 @@ function Register({ onRegister, isSubmitError, errorAuth }) {
       textLink="Войти"
       onSubmit={handleSubmit}
       isDisabled={!isValid}
-      isSubmitError={isSubmitError}
       errorAuth={errorAuth}
     >
       <label className="authorization__field authorization__field_register authorization__field_register-name">

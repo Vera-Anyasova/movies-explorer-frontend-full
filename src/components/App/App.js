@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "../App/App.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -27,7 +27,7 @@ function App() {
   const [shortMovies, setShortMovies] = useState(null);
   const [savedMovies, setSavedMovies] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState("");
   const [firstSearch, setFirstSearch] = useState(false);
@@ -104,6 +104,7 @@ function App() {
   const handleTokenCheck = useCallback(() => {
     const token = localStorage.getItem("isAuth");
     if (token) {
+      setIsLoading(true);
       auth
         .checkToken()
         .then((res) => {
@@ -113,7 +114,10 @@ function App() {
         .catch((err) => {
           console.log(err);
           handleSignout();
-        });
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
@@ -276,13 +280,13 @@ function App() {
   }
 
   function handleSignout() {
-    setLoggedIn(false);
-    setCurrentUser({});
     localStorage.clear();
     auth
       .logout()
       .then(() => {
         navigate("/", { replace: true });
+        setLoggedIn(false);
+        setCurrentUser({});
       })
       .catch((err) => {
         console.log(err);
@@ -298,21 +302,21 @@ function App() {
           <Route
             path="/sign-up"
             element={
-              <Register
-                onRegister={handleRegister}
-                isLoggedIn={loggedIn}
-                errorAuth={errorAuth}
-              />
+              !loggedIn ? (
+                <Register onRegister={handleRegister} errorAuth={errorAuth} />
+              ) : (
+                <Navigate to="/" />
+              )
             }
           />
           <Route
             path="/sign-in"
             element={
-              <Login
-                onLogin={handleLogin}
-                isLoggedIn={loggedIn}
-                errorAuth={errorAuth}
-              />
+              !loggedIn ? (
+                <Login onLogin={handleLogin} errorAuth={errorAuth} />
+              ) : (
+                <Navigate to="/" />
+              )
             }
           />
           <Route
@@ -324,6 +328,7 @@ function App() {
                 loggedIn={loggedIn}
                 handleSignout={handleSignout}
                 errorAuth={errorAuth}
+                isLoading={isLoading}
               />
             }
           />
@@ -358,6 +363,7 @@ function App() {
                 element={SavedMovies}
                 loggedIn={loggedIn}
                 savedMovies={savedMovies}
+                isLoading={isLoading}
                 setSavedMovies={setSavedMovies}
                 isInfoPopupOpen={isInfoPopupOpen}
                 onSavedMovie={handleSaveMovie}

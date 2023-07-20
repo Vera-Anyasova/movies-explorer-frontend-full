@@ -4,7 +4,7 @@ import { useFormWithValidation } from "../../hooks/useForm";
 
 import "../Login/Login.css";
 
-function Login({ onLogin, isSubmitError, errorAuth }) {
+function Login({ onLogin, errorAuth }) {
   const { values, errors, handleChange, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
@@ -26,7 +26,6 @@ function Login({ onLogin, isSubmitError, errorAuth }) {
       textLink="Регистрация"
       onSubmit={handleSubmit}
       isDisabled={!isValid}
-      isSubmitError={isSubmitError}
       errorAuth={errorAuth}
     >
       <label className="authorization__field authorization__field_login authorization__field_login-email">
