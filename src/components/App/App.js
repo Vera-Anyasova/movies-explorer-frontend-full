@@ -39,6 +39,7 @@ function App() {
   useEffect(() => {
     handleTokenCheck();
     handleGetUserMovies();
+    handleGetSavedMovies();
   }, []);
 
   useEffect(() => {
@@ -280,13 +281,18 @@ function App() {
   }
 
   function handleSignout() {
-    localStorage.clear();
     auth
       .logout()
       .then(() => {
         navigate("/", { replace: true });
+        localStorage.clear();
         setLoggedIn(false);
         setCurrentUser({});
+        setAllMovies([]);
+        setFoundMovies(null);
+        setShortMovies(null);
+        setSavedMovies(null);
+        setSearch("");
       })
       .catch((err) => {
         console.log(err);
@@ -353,6 +359,7 @@ function App() {
                 onSavedMovie={handleSaveMovie}
                 onDeleteMovie={handleDeleteMovie}
                 firstSearch={firstSearch}
+                handleGetSavedMovies={handleGetSavedMovies}
               />
             }
           />
