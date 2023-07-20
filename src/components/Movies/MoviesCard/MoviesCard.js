@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { MOVIE_IMAGE_PATH, HOUR } from "../../../utils/constants";
 
 import "../MoviesCard/MoviesCard.css";
@@ -12,7 +11,6 @@ function MoviesCard({
   isShowDeleteBtn = false,
   savedMovies,
 }) {
-  const location = useLocation();
   const [isLikedMovie, setIsLikeMovie] = useState(false);
   const movieLikeButton = `element__button ${
     isLikedMovie && "element__button_active"
@@ -25,7 +23,7 @@ function MoviesCard({
     if (savedUserMovie) {
       setIsLikeMovie(true);
     }
-  }, [location]);
+  }, [savedMovies, savedUserMovie]);
 
   function handleLikeMovie() {
     onSavedMovie(movie);
