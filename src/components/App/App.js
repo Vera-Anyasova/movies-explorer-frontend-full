@@ -159,21 +159,31 @@ function App() {
       });
   }
 
+  function handleSearchMovies() {
+    if (!search.length) return;
+
+    if (!allMovies.length) {
+      setIsLoading(true);
+      handleGetMovies();
+    } else {
+      const foundUserMovies = allMovies.filter((movie) => {
+        return movie.nameRU.toLowerCase().includes(search.toLowerCase());
+      });
+
+      if (foundUserMovies.length) {
+        setFoundMovies(foundUserMovies);
+      } else {
+        setFoundMovies(null);
+        setAllMovies(allMovies);
+      }
+    }
+  }
+
   function handleGetMovies() {
-    if (search !== 0) setIsLoading(true);
     api
       .getAllMovies()
       .then((res) => {
         setAllMovies(res);
-        const foundUserMovies = res.filter((movie) => {
-          return movie.nameRU.toLowerCase().includes(search.toLowerCase());
-        });
-        if (foundUserMovies.length) {
-          setFoundMovies(foundUserMovies);
-        } else {
-          setFoundMovies(null);
-          setAllMovies(allMovies);
-        }
       })
       .catch((err) => {
         console.log(err);
@@ -353,7 +363,7 @@ function App() {
                 savedMovies={savedMovies}
                 setIsChecked={setIsChecked}
                 isLoading={isLoading}
-                handleSearchMovies={handleGetMovies}
+                handleSearchMovies={handleSearchMovies}
                 isInfoPopupOpen={isInfoPopupOpen}
                 handleShortMovies={handleCetShortMovies}
                 onSavedMovie={handleSaveMovie}
