@@ -1,7 +1,6 @@
 import React from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
-import PopupWithMessage from "../PopupWithMessage/PopupWithMessage";
 
 import "../Movies/Movies.css";
 
@@ -14,7 +13,7 @@ function Movies({
   handleSearchMovies,
   handleShortMovies,
   isLoading,
-  isInfoPopupOpen,
+  isInfoErrorOpen,
   shortMovies,
   onMovieLike,
   onSavedMovie,
@@ -42,17 +41,12 @@ function Movies({
         onMovieLike={onMovieLike}
         isLoading={isLoading}
         isChecked={isChecked}
-        isInfoPopupOpen={isInfoPopupOpen}
+        isInfoErrorOpen={isInfoErrorOpen}
         onSavedMovie={onSavedMovie}
         onDeleteMovie={onDeleteMovie}
         savedMovies={savedMovies}
+        search={search}
       />
-      {!moviesList?.length && (
-        <PopupWithMessage
-          isOpen={!isInfoPopupOpen}
-          message="Ничего не найдено."
-        />
-      )}
     </main>
   );
 }

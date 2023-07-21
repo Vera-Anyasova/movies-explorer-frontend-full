@@ -19,6 +19,7 @@ import PopupWithInfoWin from "../PopupWithInfo/PopupWithInfoWin/PopupWithInfoWin
 import ProtectedRouteElement from "../ProtectedRoute";
 import Preloader from "../Movies/Preloader/Preloader";
 import { DURATION_SHORT_MOVIE } from "../../utils/constants";
+import PopupErrorNotFound from "../PopupWithMessage/PopupErrorNotFound/PopupErrorNotFound";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -33,6 +34,7 @@ function App() {
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [errorAuth, setErrorAuth] = useState("");
   const [isInfoPopupWinOpen, setIsInfoPopupWinOpen] = useState(false);
+  const [isInfoErrorOpen, setIsInfoErrorOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -163,16 +165,18 @@ function App() {
     if (!allMovies.length) {
       setIsLoading(true);
       handleGetMovies();
+      setIsInfoErrorOpen(false);
     } else {
       const foundUserMovies = allMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(search.toLowerCase());
       });
-
       if (foundUserMovies.length) {
         setFoundMovies(foundUserMovies);
+        setIsInfoErrorOpen(false);
       } else {
         setFoundMovies(null);
         setAllMovies(allMovies);
+        setIsInfoErrorOpen(true);
       }
     }
   }
@@ -182,6 +186,17 @@ function App() {
       .getAllMovies()
       .then((res) => {
         setAllMovies(res);
+        const foundUserMovies = res.filter((movie) => {
+          return movie.nameRU.toLowerCase().includes(search.toLowerCase());
+        });
+        if (foundUserMovies.length) {
+          setFoundMovies(foundUserMovies);
+          setIsInfoErrorOpen(false);
+        } else {
+          setFoundMovies(null);
+          setAllMovies(allMovies);
+          setIsInfoErrorOpen(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -358,7 +373,7 @@ function App() {
                 setIsChecked={setIsChecked}
                 isLoading={isLoading}
                 handleSearchMovies={handleSearchMovies}
-                isInfoPopupOpen={isInfoPopupOpen}
+                isInfoErrorOpen={isInfoErrorOpen}
                 handleShortMovies={handleCetShortMovies}
                 onSavedMovie={handleSaveMovie}
                 onDeleteMovie={handleDeleteMovie}
@@ -390,6 +405,10 @@ function App() {
           message="Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
         />
         <PopupWithInfoWin isOpen={isInfoPopupWinOpen} onClose={closePopup} />
+        <PopupErrorNotFound
+          isOpen={isInfoErrorOpen}
+          message="Ничего не найдено."
+        />
       </div>
     </CurrentUserContext.Provider>
   );
