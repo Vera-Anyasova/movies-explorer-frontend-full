@@ -1,6 +1,7 @@
 import React from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
+import PopupWithMessage from "../PopupWithMessage/PopupWithMessage";
 
 import "../Movies/Movies.css";
 
@@ -19,8 +20,12 @@ function Movies({
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
-  firstSearch,
+  handleGetSavedMovies,
 }) {
+  React.useEffect(() => {
+    handleGetSavedMovies();
+  }, []);
+
   const moviesList = !isChecked ? foundMovies : shortMovies;
   return (
     <main className="content content__movies">
@@ -41,8 +46,13 @@ function Movies({
         onSavedMovie={onSavedMovie}
         onDeleteMovie={onDeleteMovie}
         savedMovies={savedMovies}
-        firstSearch={firstSearch}
       />
+      {!moviesList?.length && (
+        <PopupWithMessage
+          isOpen={!isInfoPopupOpen}
+          message="Ничего не найдено."
+        />
+      )}
     </main>
   );
 }

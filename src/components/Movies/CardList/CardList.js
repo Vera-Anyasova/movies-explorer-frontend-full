@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./CardList.css";
 import MoviesAddition from "../MoviesAddition/MoviesAddition";
-import PopupWithMessage from "../../PopupWithMessage/PopupWithMessage";
 import useWindowSize from "../../../hooks/useWindowSize";
 import {
   COMPUTER_DISPAY,
@@ -17,12 +16,10 @@ import {
 
 function CardList({
   moviesList,
-  isInfoPopupOpen,
   onMovieLike,
   onSavedMovie,
   onDeleteMovie,
   savedMovies,
-  firstSearch,
   cardProps,
 }) {
   const width = useWindowSize();
@@ -74,12 +71,6 @@ function CardList({
           );
         })}
       </ul>
-      {!moviesToShow && firstSearch && (
-        <PopupWithMessage
-          isOpen={!isInfoPopupOpen}
-          message="Ничего не найдено."
-        />
-      )}
       {isShowMoreVisible && (
         <MoviesAddition handleAddMovies={handleAddMovies} />
       )}

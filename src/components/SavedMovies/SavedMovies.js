@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import FilterCheckbox from "../Movies/SearchForm/FilterCheckbox/FilterCheckbox";
 import CardList from "../Movies/CardList/CardList";
 import { DURATION_SHORT_MOVIE } from "../../utils/constants";
-import PopupWithMessage from "../PopupWithMessage/PopupWithMessage";
+import PopupErrorNotFound from "../PopupWithMessage/PopupErrorNotFound/PopupErrorNotFound";
 
 import "../SavedMovies/SavedMovies.css";
 
 function SavedMovies({
   isChecked,
-  isInfoPopupOpen,
   onSavedMovie,
   onMovieLike,
   onDeleteMovie,
@@ -20,6 +19,14 @@ function SavedMovies({
   const [searchSavedMovie, setSearchSavedMovie] = useState("");
   const [foundMovies, setFoundMovies] = useState(null);
   const [shortMovies, setShortMovies] = useState(null);
+  const [isInfoPopupErrorOpen, setIsInfoPopupErrorOpen] = useState(false);
+
+  const moviesSavedList = !isCheckedQuery ? foundMovies : shortMovies;
+
+  React.useEffect(() => {
+    handleGetSavedMovies();
+    setIsInfoPopupErrorOpen(false);
+  }, []);
 
   React.useEffect(() => {
     if (!isCheckedQuery) {
@@ -37,8 +44,10 @@ function SavedMovies({
     });
     if (filteredSavedMovies.length) {
       setFoundMovies(filteredSavedMovies);
+      setIsInfoPopupErrorOpen(false);
     } else {
       setFoundMovies(null);
+      setIsInfoPopupErrorOpen(true);
     }
   }
 
@@ -54,8 +63,6 @@ function SavedMovies({
     }
   }
 
-  const moviesSavedList = !isCheckedQuery ? foundMovies : shortMovies;
-
   return (
     <main className="content content__savedMovies">
       <FilterCheckbox
@@ -70,7 +77,6 @@ function SavedMovies({
         moviesList={!searchSavedMovie ? savedMovies : moviesSavedList}
         onMovieLike={onMovieLike}
         isChecked={isChecked}
-        isInfoPopupOpen={isInfoPopupOpen}
         onSavedMovie={onSavedMovie}
         onDeleteMovie={onDeleteMovie}
         cardProps={{
@@ -78,9 +84,9 @@ function SavedMovies({
           isShowDeleteBtn: true,
         }}
       />
-      {!moviesSavedList && searchSavedMovie && (
-        <PopupWithMessage
-          isOpen={!isInfoPopupOpen}
+      {searchSavedMovie && !foundMovies && (
+        <PopupErrorNotFound
+          isOpen={isInfoPopupErrorOpen}
           message="Ничего не найдено."
         />
       )}

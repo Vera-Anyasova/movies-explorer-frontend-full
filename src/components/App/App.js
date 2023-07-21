@@ -30,7 +30,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
   const [search, setSearch] = useState("");
-  const [firstSearch, setFirstSearch] = useState(false);
   const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
   const [errorAuth, setErrorAuth] = useState("");
   const [isInfoPopupWinOpen, setIsInfoPopupWinOpen] = useState(false);
@@ -49,7 +48,6 @@ function App() {
       localStorage.setItem("isChecked", JSON.stringify(isChecked));
     };
 
-    search === "" ? setFirstSearch(false) : setFirstSearch(true);
     window.addEventListener("beforeunload", saveToList);
   }, [foundMovies, search, isChecked]);
 
@@ -238,10 +236,6 @@ function App() {
     }
   }
 
-  React.useEffect(() => {
-    handleGetSavedMovies();
-  }, [currentUser]);
-
   function handleGetSavedMovies() {
     if (loggedIn) {
       mainApi
@@ -368,7 +362,6 @@ function App() {
                 handleShortMovies={handleCetShortMovies}
                 onSavedMovie={handleSaveMovie}
                 onDeleteMovie={handleDeleteMovie}
-                firstSearch={firstSearch}
                 handleGetSavedMovies={handleGetSavedMovies}
               />
             }
