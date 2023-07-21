@@ -1,0 +1,354 @@
+.header {
+  font-family: "Inter", Arial, sans-serif;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.header__logo {
+  display: flex;
+  background: url(../../images/logo.svg) no-repeat;
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
+  object-fit: cover;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 18px;
+  left: 70px;
+  z-index: 2;
+}
+
+.header__container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 18px 70px;
+  margin: 0 auto;
+}
+
+.header__container_home {
+  background: #073042;
+  color: #fff;
+}
+
+.header__container_movies {
+  background: #fff;
+  color: #000;
+}
+
+.header__menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header__menu_movies {
+  max-width: 1140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header__logo:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #000;
+  padding: 0;
+  margin: 0;
+}
+
+.header__link_home {
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+  color: #fff;
+  position: absolute;
+  top: 12px;
+  right: 106px;
+}
+
+.header__link:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.header__link_movies {
+  color: #000;
+  font-size: 13px;
+  line-height: 1.38;
+  font-weight: 400;
+}
+
+.header__link_movies:focus {
+  font-weight: 500;
+}
+
+.header__link_main {
+  font-size: 18px;
+  line-height: 1.22;
+  font-weight: 500;
+  margin: 0 auto 28px;
+  display: none;
+}
+
+.header__link_movies-whole {
+  margin: 0 16px 0 82px;
+}
+
+.header__link_movies-saved {
+  margin-right: auto;
+}
+
+.header__button {
+  font-weight: 500;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 3px 0;
+}
+
+.header__button_login {
+  width: 76px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000;
+  border-radius: 3px;
+  background: #2be080;
+  border: 0;
+}
+
+.header__button_account {
+  width: 100px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 1.14;
+  border-radius: 50px;
+  border: 2px solid #aaa;
+  background: #fff;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.header__icon {
+  font-size: 14px;
+  line-height: 1.14;
+  box-sizing: border-box;
+  object-fit: cover;
+  padding: 0;
+  margin: 0 7px 0 0;
+}
+
+.header__burger-btn {
+  display: none;
+}
+
+.header__btn-close {
+  display: none;
+}
+
+@media screen and (max-width: 984px) {
+  .header__logo {
+    left: 30px;
+  }
+
+  .header__container_home {
+    padding: 18px 30px;
+  }
+
+  .header__burger-btn {
+    width: 44px;
+    height: 44px;
+    background: url(../../images/burger-menu.svg) no-repeat;
+    box-sizing: border-box;
+    background-color: transparent;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    border: 0;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    padding: 0;
+  }
+
+  .header__burger-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  .header__burger-btn::before {
+    position: absolute;
+  }
+
+  .header__container_movies {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+  }
+
+  .header__container_movies-opened .header__container_movies {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .header__menu_movies {
+    width: 520px;
+    height: 100%;
+    overflow: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+
+  .header__btn-close {
+    display: block;
+    width: 22px;
+    height: 22px;
+    background: url(../../images/btn-close.svg) center no-repeat;
+    background-size: 32px 32px;
+    position: absolute;
+    top: 22.44px;
+    right: 22.44px;
+    z-index: 1;
+    border: 0;
+    padding: 0;
+  }
+
+  .header__btn-close {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .header__link_movies {
+    font-size: 18px;
+    line-height: 1.22;
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+
+  .header__link_main {
+    display: flex;
+    margin: 159px 0 28px;
+  }
+
+  .header__link_movies-whole {
+    margin-bottom: 22px;
+  }
+
+  .header__link_movies:hover {
+    box-sizing: border-box;
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .header__link_movies-saved {
+    margin: 0;
+  }
+
+  .header__link-profile {
+    margin: 621px 0 90px;
+    text-decoration: none;
+  }
+
+  .header__button_account {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .header__logo {
+    left: 14px;
+  }
+
+  .header__container_home {
+    padding: 18px 14px;
+  }
+
+  .header__link_home {
+    font-size: 10px;
+    line-height: 1.6;
+    right: 68px;
+  }
+
+  .header__button_login {
+    width: 54px;
+    height: 26px;
+    box-sizing: border-box;
+    font-size: 10px;
+    line-height: 1.6;
+    margin: 6px 0;
+  }
+
+  .header__burger-btn {
+    background: url(../../images/burger-small.svg);
+    width: 40px;
+    height: 43px;
+    right: 14px;
+    margin-bottom: 16px;
+  }
+
+  .header__btn-close {
+    top: 13.44px;
+    right: 13.44px;
+  }
+
+  .header__link_main {
+    display: flex;
+    margin: 144px 0 24px;
+  }
+
+  .header__link_movies-whole {
+    padding-bottom: 7px;
+    margin-bottom: 17px;
+  }
+
+  .header__link-profile {
+    margin: 444px 0 46px;
+  }
+}

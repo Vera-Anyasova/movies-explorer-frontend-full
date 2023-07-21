@@ -1,0 +1,175 @@
+.authorization__profile {
+  max-width: 410px;
+  padding: 74px 0 70px;
+}
+
+.header__logo_authorization-profile {
+  display: none;
+}
+
+.authorization__title_profile {
+  padding: 0 0 123px 0;
+  text-align: center;
+}
+
+.authorization__form_profile {
+  max-width: 410px;
+  position: relative;
+}
+
+.authorization__field_profile {
+  width: 100%;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.18;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.authorization__profile-name {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  z-index: 1;
+}
+
+.authorization__profile-email {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  z-index: 1;
+}
+
+.authorization__field_profile-password {
+  display: none;
+}
+
+.authorization__input_profile {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.18;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 0px;
+  background: #fff;
+  text-align: right;
+  padding: 0 0 16px 0;
+  margin: 0 0 17px;
+  position: relative;
+}
+
+.authorization__input_profile:focus {
+  outline: 1px solid #2be080;
+}
+
+.authorization__input_profile-email {
+  border-bottom: 0px;
+}
+
+.authorization__input_profile-password {
+  display: none;
+}
+
+.authorization__error_profile-name {
+  top: 35px;
+}
+
+.authorization__error_profile-email {
+  top: 80px;
+}
+
+.authorization__button-profile {
+  margin-top: 0;
+}
+
+.authorization__item_profile {
+  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 187px;
+}
+
+.authorization__text_profile {
+  display: none;
+}
+
+.authorization__link_profile {
+  font-size: 13px;
+  line-height: 1.23;
+  font-weight: 500;
+  color: #ff3055;
+  align-self: center;
+}
+
+.authorization__link_profile:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.authorization__button-edit {
+  font-size: 13px;
+  line-height: 1.23;
+  font-weight: 500;
+  color: #000;
+  padding: 0 0 16px 0;
+  align-items: center;
+  margin: 0 auto;
+  border: 0;
+  background: #fff;
+}
+
+.authorization__button-edit:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.authorization__button-edit_disabled {
+  display: none;
+}
+
+@media screen and (max-width: 984px) {
+  .authorization__profile {
+    padding: 236px 0 269px;
+  }
+
+  .authorization__title_profile {
+    padding-bottom: 96px;
+  }
+
+  .authorization__item_profile {
+    padding-top: 177px;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .authorization__profile {
+    padding: 70px 30px 40px;
+  }
+
+  .authorization__form_profile {
+    max-width: 260px;
+  }
+
+  .authorization__title_profile {
+    padding-bottom: 80px;
+  }
+
+  .authorization__input_profile-email {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .authorization__item_profile {
+    padding-top: 379px;
+  }
+
+  .authorization__link_profile {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .authorization__link_profile-edit {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
